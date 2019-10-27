@@ -49,6 +49,10 @@ class Line():
 
         self.I2 = self.S2COMPL / self.V2      
 
+class SolverMethods(Line):
+    def __init__(self):
+        print("Init")
+
 if __name__ == "__main__":
     print("Init")
     
