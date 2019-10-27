@@ -47,11 +47,7 @@ class Line():
         self.videal = 1 / math.sqrt(self.L * self.C)
         self.t = self.v / self.l
 
-        self.I2 = self.S2COMPL / self.V2      
-
-class SolverMethods(Line):
-    def __init__(self):
-        print("Init")
+        self.I2 = (self.S2COMPL / self.V2).conjugate()      
 
 if __name__ == "__main__":
     print("Init")
