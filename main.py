@@ -57,7 +57,16 @@ class SolverMethods(Line):
 
         return {
             "V1":V1,
-            "I2":I2,
+            "I2":I2
+            }
+
+    def exponential_model(self):
+        V1 = (((self.V2+self.I2*self.ZC)/2)*cmath.exp(self.GAMAX)) + (((self.V2-self.I2*self.ZC)/2)*cmath.exp(-self.GAMAX))
+        I2 = (1/self.ZC)*((((self.V2+self.I2*self.ZC)/2)*cmath.exp(self.GAMAX))-(((self.V2-self.I2*self.ZC)/2)*cmath.exp(-self.GAMAX)))
+
+        return {
+            "V1":V1,
+            "I2":I2
             }
 
     def line_model_t(self):
@@ -78,4 +87,6 @@ class SolverMethods(Line):
     
 if __name__ == "__main__":
     print("Init")
+
+    print(SolverMethods().exponential_model())
     
