@@ -67,7 +67,15 @@ class SolverMethods(Line):
             "V1":V1,
             "I1":I1
         }
-
+    
+    def line_model_pi(self):
+        V1 = self.V2*(1+(self.Z*self.Y*(self.l**2))/2)+self.I2*self.Z*self.l
+        I1 = self.I2*(1+(self.Z*self.Y*(self.l**2))/2)+self.V2*self.Y*self.l*(1+(self.Z*self.Y*(self.l**2))/4)
+        return{
+            "V1":V1,
+            "I1":I1
+        }
+    
 if __name__ == "__main__":
     print("Init")
     
