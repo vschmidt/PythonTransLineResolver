@@ -69,6 +69,18 @@ class SolverMethods(Line):
             "I2":I2
             }
 
+    def hyperbolic_model(self):
+        h_sin = cmath.sinh(self.GAMAX)     
+        h_cos = cmath.cosh(self.GAMAX)
+
+        V1 = self.V2*(h_cos) + self.I2*self.ZC*h_sin
+        I1 = self.I2*(h_cos) + (self.V2/self.ZC)*h_sin
+
+        return{
+            "V1":V1,
+            "I1":I1
+        }
+
     def line_model_t(self):
         V1 = self.V2*(1+(self.Z*self.Y*(self.l**2))/2)+self.I2*self.Z*self.l*(1+(self.Z*self.Y*(self.l**2))/4)
         I1 = self.I2*(1+(self.Z*self.Y*(self.l**2))/2)+self.V2*self.Y*self.l
@@ -87,6 +99,4 @@ class SolverMethods(Line):
     
 if __name__ == "__main__":
     print("Init")
-
-    print(SolverMethods().exponential_model())
     
