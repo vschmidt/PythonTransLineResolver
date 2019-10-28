@@ -60,6 +60,14 @@ class SolverMethods(Line):
             "I2":I2,
             }
 
+    def line_model_t(self):
+        V1 = self.V2*(1+(self.Z*self.Y*(self.l**2))/2)+self.I2*self.Z*self.l*(1+(self.Z*self.Y*(self.l**2))/4)
+        I1 = self.I2*(1+(self.Z*self.Y*(self.l**2))/2)+self.V2*self.Y*self.l
+        return{
+            "V1":V1,
+            "I1":I1
+        }
+
 if __name__ == "__main__":
     print("Init")
     
