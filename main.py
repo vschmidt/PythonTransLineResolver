@@ -15,10 +15,10 @@ class Line():
             q2 = math.sqrt(s2**2 - p2**2)
             return q2
 
-        self.R = 72.197 #In Ω/km
-        self.G = 0 #In S/km
-        self.L = 0.001142090 #In Henry/km
-        self.C = 0.0000000103488 #In Farads/km
+        self.R = 0.000072197 #In Ω/m
+        self.G = 0 #In S/m
+        self.L = 0.000001142090 #In Henry/m
+        self.C = 0.0000000000103488 #In Farads/m
         self.l = 80000 #In meters            
         
         self.num_phases = 1 #1 or 3
@@ -48,6 +48,17 @@ class Line():
         self.t = self.v / self.l
 
         self.I2 = (self.S2COMPL / self.V2).conjugate()      
+
+class SolverMethods(Line):
+    
+    def short_line(self):
+        V1 = self.V2 + self.I2 * self.Z * self.l
+        I2 = self.I2
+
+        return {
+            "V1":V1,
+            "I2":I2,
+            }
 
 if __name__ == "__main__":
     print("Init")
