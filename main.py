@@ -15,18 +15,18 @@ class Line():
             q2 = math.sqrt(s2**2 - p2**2)
             return q2
 
-        self.R = line["R"] #In Ω/m
-        self.G = line["G"] #In S/m
-        self.L = line["L"] #In Henry/m
-        self.C = line["C"] #In Farads/m
-        self.l = line["l"] #In meters            
+        self.R = line["R"] 
+        self.G = line["G"] 
+        self.L = line["L"] 
+        self.C = line["C"] 
+        self.l = line["l"]          
         
         self.num_phases = 1 #1 or 3
-        self.power_factor = line["power_factor"]#cos(Φ) inductive
-        self.V2 = line["V2"] #In Volts
-        self.f = line["f"] #In Hertz
+        self.power_factor = line["power_factor"]
+        self.V2 = line["V2"]
+        self.f = line["f"]
 
-        self.S2 = line["S2"] #In VA
+        self.S2 = line["S2"]
         self.P2 = p2_solver(self.power_factor, self.S2) #In W
         self.Q2 = q2_solver(self.P2, self.S2) #In VAr
         self.S2COMPL = complex(self.P2, self.Q2) #In VA
@@ -100,7 +100,7 @@ class SolverMethods(Line):
 if __name__ == "__main__":
 
     line_params = {
-        "R": 0.000072197,
+        "R": 0.000072197,#In Ω
         "G": 0, #In S/m
         "L": 0.000001142090, #In Henry/m
         "C": 0.0000000000103488, #In Farads/m
