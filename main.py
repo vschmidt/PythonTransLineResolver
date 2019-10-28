@@ -6,7 +6,7 @@
 import math, cmath
 
 class Line():
-    def __init__(self):
+    def __init__(self, line):
         def p2_solver(power_factor, S2):
             p2 = power_factor * S2
             return p2
@@ -15,18 +15,18 @@ class Line():
             q2 = math.sqrt(s2**2 - p2**2)
             return q2
 
-        self.R = 0.000072197 #In Ω/m
-        self.G = 0 #In S/m
-        self.L = 0.000001142090 #In Henry/m
-        self.C = 0.0000000000103488 #In Farads/m
-        self.l = 80000 #In meters            
+        self.R = line["R"] #In Ω/m
+        self.G = line["G"] #In S/m
+        self.L = line["L"] #In Henry/m
+        self.C = line["C"] #In Farads/m
+        self.l = line["l"] #In meters            
         
         self.num_phases = 1 #1 or 3
-        self.power_factor = 0.92 #cos(Φ) inductive
-        self.V2 = 500000 #In Volts
-        self.f = 60 #In Hertz
+        self.power_factor = line["power_factor"]#cos(Φ) inductive
+        self.V2 = line["V2"] #In Volts
+        self.f = line["f"] #In Hertz
 
-        self.S2 = 70600000 #In VA
+        self.S2 = line["S2"] #In VA
         self.P2 = p2_solver(self.power_factor, self.S2) #In W
         self.Q2 = q2_solver(self.P2, self.S2) #In VAr
         self.S2COMPL = complex(self.P2, self.Q2) #In VA
@@ -98,11 +98,24 @@ class SolverMethods(Line):
         }
     
 if __name__ == "__main__":
-    short_line = SolverMethods().short_line()
-    exponential_model = SolverMethods().exponential_model()
-    hyperbolic_model = SolverMethods().hyperbolic_model()
-    line_model_t = SolverMethods().line_model_t()
-    line_model_pi = SolverMethods().line_model_pi()
+
+    line_params = {
+        "R": 0.000072197,
+        "G": 0, #In S/m
+        "L": 0.000001142090, #In Henry/m
+        "C": 0.0000000000103488, #In Farads/m
+        "l": 80000, #In meters            
+        "power_factor": 0.92, #cos(Φ) inductive
+        "V2": 500000, #In Volts
+        "f": 60, #In Hertz
+        "S2": 70600000 #In VA
+    }
+
+    short_line = SolverMethods(line_params).short_line()
+    exponential_model = SolverMethods(line_params).exponential_model()
+    hyperbolic_model = SolverMethods(line_params).hyperbolic_model()
+    line_model_t = SolverMethods(line_params).line_model_t()
+    line_model_pi = SolverMethods(line_params).line_model_pi()
 
     print("Method: Short Line")
     print("Input Voltage: "+str(short_line["V1"])+"[V]")
@@ -123,7 +136,7 @@ if __name__ == "__main__":
     print("Input Voltage: "+str(line_model_t["V1"])+"[V]")
     print("Input Courent: "+str(line_model_t["I1"])+"[A]")
     print("")
-    
+
     print("Method: Pi-Line")
     print("Input Voltage: "+str(line_model_pi["V1"])+"[V]")
     print("Input Courent: "+str(line_model_pi["I1"])+"[A]")
