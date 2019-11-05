@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse
 
 def index(request):
-    HttpResponse("Index")
+    return render(request, "calc_methods/index.html")
 
