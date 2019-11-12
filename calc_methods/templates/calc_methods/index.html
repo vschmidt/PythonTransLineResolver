@@ -1,4 +1,96 @@
 {% extends "calc_methods/partinal/base.html" %}
 {% block content %}
+<div class="col-md-12 row">
+    <div class="col-md-6 col-lg-4 my-auto">
+        <div class="card text-white bg-dark mb-3">
+            <div class="card-header">Line Parameters</div>
+            <div class="card-body">
 
+                <!-- Resistance -->
+                <div class="form-group row">
+                    <h6 class="col-md-4 card-title">Resistance</h6>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control text-right" id="resistance_input" placeholder="In Ω">
+                    </div>
+                </div>
+
+                <!-- Admittance -->
+                <div class="form-group row">
+                    <label for="admittance_input" class="col-sm-4 col-form-label">Admittance</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control text-right" id="admittance_input" placeholder="In S/m">
+                    </div>
+                </div>
+
+                <!-- Inductance -->
+                <div class="form-group row">
+                    <label for="inductance_input" class="col-sm-4 col-form-label">Inductance</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control text-right" id="inductance_input" placeholder="In H/m">
+                    </div>
+                </div>
+
+                <!-- Capacitance -->
+                <div class="form-group row">
+                    <label for="capacitance_input" class="col-sm-4 col-form-label">Capacitance</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control text-right" id="capacitance_input" placeholder="In F/m">
+                    </div>
+                </div>
+
+                <!-- Line Distance -->
+                <div class="form-group row">
+                    <label for="distance_input" class="col-md-4 col-lg-5 col-form-label">Line Distance</label>
+                    <div class="col-md-8 col-lg-7">
+                        <input type="text" class="form-control text-right" id="distance_input" placeholder="In m">
+                    </div>
+                </div>
+
+                <!-- Power Factor -->
+                <div class="form-group row">
+                    <label for="power_factor_input" class="col-md-4 col-lg-5 col-form-label">Power Factor</label>
+                    <div class="col-md-8 col-lg-7">
+                        <input type="text" class="form-control text-right" id="power_factor_input"
+                            placeholder="cos(Φ) inductive">
+                    </div>
+                </div>
+
+                <!-- Output Voltage -->
+                <div class="form-group row">
+                    <label for="output_voltage_input" class="col-md-5 col-lg-6 col-form-label">Output
+                        Voltage</label>
+                    <div class="col-md-7 col-lg-6">
+                        <input type="text" class="form-control text-right" id="output_voltage_input"
+                            placeholder="In Volts">
+                    </div>
+                </div>
+
+                <!-- Line Frequency -->
+                <div class="form-group row">
+                    <label for="line_frequency_input" class="col-md-5 col-lg-6 col-form-label">Line
+                        Frequency</label>
+                    <div class="col-md-7 col-lg-6">
+                        <input type="text" class="form-control text-right" id="line_frequency_input"
+                            placeholder="In Hertz">
+                    </div>
+                </div>
+
+                <!-- Output Apparent Power -->
+                <div class="form-group row">
+                    <label for="output_aparent_power_input" class="col-md-5 col-lg-6 col-form-label">Output Apparent
+                        Power</label>
+                    <div class="col-md-7 col-lg-6">
+                        <input type="text" class="form-control text-right" id="output_aparent_power_input"
+                            placeholder="In VA">
+                    </div>
+                </div>
+
+            </div>
+            <div class="card-footer bg-dark text-white"></div>
+        </div>
+    </div>
+    <div class="col-md-9 col-lg-8">
+
+    </div>
+</div>
 {% endblock %}
